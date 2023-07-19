@@ -1,0 +1,77 @@
+<mvc:View controllerName="idcartonenquiry.zcartonenquiry.controller.Scanner"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ndc="sap.ndc">
+    <Page id="page" title="{i18n>title}">
+        <headerContent>
+            <ndc:BarcodeScannerButton id="sampleBarcodeScannerButton" scanSuccess="onScanSuccess" scanFail="onScanError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" />
+        </headerContent>
+        <content>
+            <!-- <FlexBox justifyContent="Center"> -->
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" emptySpanL="6" emptySpanM="6">
+
+                <f:content>
+                    <Label text="H.U Number" />
+                    <Input id="idHUNumber" />
+                    <Button width="4rem" text="OK" id="idOk" press="onOk" />
+                    <Label text="Unit/Floor" />
+                    <Select id="idUnitFloor" />
+                    <HBox>
+                        <Text text="T.S" />
+                        <Input id="idTS" editable="false" width="3rem" />
+                    </HBox>
+                    <Label text="D.Number" />
+                    <Input id="idDNumber" />
+                    <HBox>
+                        <Text text="S.O" />
+                        <Input id="idSO" editable="false" width="3rem" />
+                    </HBox>
+                    <Label text="Scan Here" />
+
+                    <Input id="idScanHere" />
+                    <ndc:BarcodeScannerButton id="sampleBarcodeScannerButtonChild" scanSuccess="onScanAgainSuccess" scanFail="onScanAgainError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" width="4rem" />
+                </f:content>
+
+            </f:SimpleForm>
+            <!-- </FlexBox> -->
+            <Table sticky="ColumnHeaders" width="80rem" id="idProductsTable" inset="true" headerText="Product Details" alternateRowColors="true" items="{ path: 'ScanData1>/'}">
+                <columns>
+                    <Column minScreenWidth="Phone" demandPopin="true" autoPopinWidth="8">
+                        <Text text="Material" />
+                    </Column>
+
+                    <Column minScreenWidth="Phone" demandPopin="true">
+                        <Text text="Batch_No" />
+                    </Column>
+
+                    <Column minScreenWidth="Phone" demandPopin="true">
+                        <Text text="Grid" />
+                    </Column>
+
+                    <Column minScreenWidth="Phone" demandPopin="true">
+                        <Text text="Quantity" />
+                    </Column>
+
+                    <Column minScreenWidth="Phone" demandPopin="true">
+                        <Text text="Scanned" />
+                    </Column>
+
+                    <Column>
+                        <Text text="EAN_NO" />
+                    </Column>
+                </columns>
+                <ColumnListItem type="Active" id="colss">
+                    <cells>
+                        <ObjectIdentifier title="{ScanData1>Matnr}" />
+                        <Text text="{ScanData1>ZbatchNum}" />
+                        <Text text="{ScanData1>Zgrid}" />
+                        <Text text="{ScanData1>Menge}" />
+                        <Text text="{ScanData1>Zscanned}" />
+                        <Text text="{ScanData1>ZeanNum}" />
+                    </cells>
+                </ColumnListItem>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
