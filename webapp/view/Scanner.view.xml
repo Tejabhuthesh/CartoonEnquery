@@ -3,14 +3,11 @@
     xmlns="sap.m"
     xmlns:f="sap.ui.layout.form"
     xmlns:ndc="sap.ndc">
-    <Page id="page" title="{i18n>title}">
-        <headerContent>
-            <ndc:BarcodeScannerButton id="sampleBarcodeScannerButton" scanSuccess="onScanSuccess" scanFail="onScanError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" />
-        </headerContent>
+    <Page id="page" >
+       
         <content>
-            <!-- <FlexBox justifyContent="Center"> -->
-            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" emptySpanL="6" emptySpanM="6">
-
+            <f:SimpleForm  title = "{i18n>title}" editable="true" layout="ResponsiveGridLayout" emptySpanL="6" emptySpanM="6" class="ts1">
+              <ndc:BarcodeScannerButton id="sampleBarcodeScannerButton" scanSuccess="onScanSuccess" scanFail="onScanError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" width="4rem"/>
                 <f:content>
                     <Label text="H.U Number" />
                     <Input id="idHUNumber" />
@@ -28,35 +25,28 @@
                         <Input id="idSO" editable="false" width="3rem" />
                     </HBox>
                     <Label text="Scan Here" />
-
                     <Input id="idScanHere" />
-                    <ndc:BarcodeScannerButton id="sampleBarcodeScannerButtonChild" scanSuccess="onScanAgainSuccess" scanFail="onScanAgainError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" width="4rem" />
+                    <ndc:BarcodeScannerButton id="sampleBarcodeScannerButtonChild" scanSuccess="onScanSuccessChild" scanFail="onScanAgainError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" width="4rem" />
                 </f:content>
-
             </f:SimpleForm>
-            <!-- </FlexBox> -->
-            <Table sticky="ColumnHeaders" width="80rem" id="idProductsTable" inset="true" headerText="Product Details" alternateRowColors="true" items="{ path: 'ScanData1>/'}">
+            
+            <Table sticky="ColumnHeaders" width="80rem" id="idProductsTable" inset="true" class="ts" headerText="Product Details" alternateRowColors="true" items="{ path: 'ScanData1>/'}">
                 <columns>
-                    <Column minScreenWidth="Phone" demandPopin="true" autoPopinWidth="8">
+                    <Column minScreenWidth="Phone" demandPopin="true">
                         <Text text="Material" />
                     </Column>
-
                     <Column minScreenWidth="Phone" demandPopin="true">
                         <Text text="Batch_No" />
                     </Column>
-
                     <Column minScreenWidth="Phone" demandPopin="true">
                         <Text text="Grid" />
                     </Column>
-
                     <Column minScreenWidth="Phone" demandPopin="true">
                         <Text text="Quantity" />
                     </Column>
-
                     <Column minScreenWidth="Phone" demandPopin="true">
                         <Text text="Scanned" />
                     </Column>
-
                     <Column>
                         <Text text="EAN_NO" />
                     </Column>
